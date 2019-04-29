@@ -1,0 +1,19 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'votings/css/style.css' %}">
+
+<img class="img" src="{% static 'votings/images/default-avatar.jpg' %}" />
+
+{% if questions %}
+
+    <ul>
+    {% for question in questions %}
+        <li>
+          <a href="{% url 'votings:detail' question.id %}">{{ question.question_text }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
